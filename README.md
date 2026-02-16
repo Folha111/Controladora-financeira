@@ -1,73 +1,142 @@
-# React + TypeScript + Vite
+# Monetix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicativo web de **gestao financeira pessoal** construido com React e TypeScript. Permite controlar receitas, despesas, investimentos, orcamentos e metas financeiras de forma simples e intuitiva.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dashboard** — Visao geral com cards de resumo (receitas, despesas, saldo, investimentos) e graficos interativos
+- **Transacoes** — Cadastro, edicao e exclusao de receitas e despesas com categorizacao
+- **Investimentos** — Acompanhamento de acoes, renda fixa, fundos, criptomoedas e imoveis com calculo de rentabilidade
+- **Orcamentos** — Definicao de limites mensais por categoria com alerta de estouro
+- **Metas** — Criacao de objetivos financeiros com acompanhamento de progresso
+- **Relatorios** — Relatorios detalhados com exportacao em PDF e CSV
+- **Autenticacao** — Login com protecao por senha e persistencia de sessao
+- **Configuracoes** — Alteracao de senha e limpeza de dados
 
-## React Compiler
+## Stack Tecnologica
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Camada | Tecnologias |
+|---|---|
+| **Framework** | React 19, TypeScript 5.9, Vite 7 |
+| **Estado** | Zustand 5 |
+| **Estilizacao** | Tailwind CSS 4, shadcn/ui, Radix UI |
+| **Graficos** | Chart.js, react-chartjs-2 |
+| **Roteamento** | React Router DOM 7 |
+| **Exportacao** | jsPDF, jspdf-autotable |
+| **Utilitarios** | date-fns, uuid, Lucide React (icones) |
 
-## Expanding the ESLint configuration
+## Pre-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Node.js](https://nodejs.org/) >= 18
+- npm >= 9
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalacao e Execucao
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Clonar o repositorio
+git clone <url-do-repositorio>
+cd monetix
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desenvolvimento
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O app estara disponivel em `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Credenciais padrao
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Usuario | Senha |
+|---|---|
+| `admin` | `123` |
+
+## Scripts Disponiveis
+
+| Comando | Descricao |
+|---|---|
+| `npm run dev` | Inicia o servidor de desenvolvimento com HMR |
+| `npm run build` | Compila TypeScript e gera o bundle de producao em `/dist` |
+| `npm run preview` | Serve o build de producao localmente |
+| `npm run lint` | Executa o ESLint para verificar qualidade do codigo |
+
+## Estrutura do Projeto
+
 ```
+src/
+├── components/          # Componentes React
+│   ├── ui/              # Componentes reutilizaveis (shadcn/ui)
+│   ├── layout/          # Shell, Sidebar, Header, MobileNav
+│   ├── dashboard/       # Cards e graficos do dashboard
+│   ├── transactions/    # CRUD de transacoes
+│   ├── investments/     # Gestao de investimentos
+│   ├── budgets/         # Gestao de orcamentos
+│   ├── goals/           # Gestao de metas
+│   ├── reports/         # Relatorios e exportacao
+│   └── shared/          # Componentes compartilhados
+├── pages/               # Paginas da aplicacao
+├── store/               # Stores Zustand (estado global)
+├── hooks/               # Custom hooks por dominio
+├── services/            # Camada de servicos (mock)
+│   ├── mock/            # Implementacoes mock
+│   ├── reportExport/    # Exportacao PDF/CSV
+│   └── interfaces/      # Contratos dos servicos
+├── mocks/               # Dados de exemplo
+├── types/               # Definicoes de tipos TypeScript
+└── utils/               # Funcoes utilitarias (calculos, formatacao)
+```
+
+## Arquitetura
+
+A aplicacao segue uma arquitetura em camadas:
+
+```
+Pages → Custom Hooks → Zustand Store → Service Layer → Dados (in-memory)
+```
+
+- **Pages** — Componentes de pagina que orquestram a UI
+- **Hooks** — Encapsulam logica de estado e inicializacao por dominio
+- **Stores** — Gerenciamento de estado global com Zustand
+- **Services** — Abstracoes para operacoes de dados (preparadas para integracao com backend)
+- **Dados** — Armazenamento em memoria com localStorage para autenticacao
+
+## Rotas
+
+| Rota | Pagina |
+|---|---|
+| `/` | Dashboard |
+| `/transacoes` | Transacoes |
+| `/investimentos` | Investimentos |
+| `/orcamentos` | Orcamentos |
+| `/metas` | Metas |
+| `/relatorios` | Relatorios |
+| `/configuracoes` | Configuracoes |
+
+## Modelos de Dados
+
+### Transacao
+- `id`, `type` (income/expense), `category`, `description`, `amountCents`, `date`, `createdAt`
+
+### Investimento
+- `id`, `type` (stocks/fixed_income/funds/crypto/real_estate/other), `name`, `amountCents`, `currentValueCents`, `date`, `createdAt`
+
+### Orcamento
+- `id`, `category`, `limitCents`, `month` (YYYY-MM)
+
+### Meta
+- `id`, `title`, `targetCents`, `currentCents`, `deadline`, `createdAt`
+
+> Valores monetarios sao armazenados em **centavos** (`amountCents`) para evitar problemas de precisao com ponto flutuante.
+
+## Build de Producao
+
+```bash
+npm run build
+```
+
+O bundle otimizado sera gerado na pasta `/dist`, pronto para deploy em qualquer servidor de arquivos estaticos (Vercel, Netlify, etc.).
+
+## Licenca
+
+Este projeto e de uso privado.
