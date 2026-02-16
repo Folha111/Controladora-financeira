@@ -6,6 +6,7 @@ import {
   Wallet,
   Target,
   FileBarChart,
+  Newspaper,
   Settings,
   LogOut,
 } from 'lucide-react';
@@ -19,6 +20,7 @@ const links = [
   { to: '/orcamentos', label: 'Orçamentos', icon: Wallet },
   { to: '/metas', label: 'Metas', icon: Target },
   { to: '/relatorios', label: 'Relatórios', icon: FileBarChart },
+  { to: '/noticias', label: 'Notícias', icon: Newspaper },
   { to: '/configuracoes', label: 'Configurações', icon: Settings },
 ];
 
