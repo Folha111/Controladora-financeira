@@ -115,6 +115,13 @@ export interface Goal {
   createdAt: string;
 }
 
+export interface NewsMessage {
+  id: string;
+  author: string;
+  content: string;
+  createdAt: string; // ISO datetime
+}
+
 export type PeriodFilter = 'week' | 'month' | 'year' | 'custom';
 
 export interface DateRange {

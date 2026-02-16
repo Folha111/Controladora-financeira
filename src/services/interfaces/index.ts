@@ -1,4 +1,4 @@
-import type { Transaction, Investment, Budget, Goal } from '@/types';
+import type { Transaction, Investment, Budget, Goal, NewsMessage } from '@/types';
 
 export interface ITransactionService {
   getAll(): Promise<Transaction[]>;
@@ -28,6 +28,13 @@ export interface IGoalService {
   getAll(): Promise<Goal[]>;
   create(data: Omit<Goal, 'id' | 'createdAt'>): Promise<Goal>;
   update(id: string, data: Partial<Goal>): Promise<Goal>;
+  delete(id: string): Promise<void>;
+  clearAll(): Promise<void>;
+}
+
+export interface INewsService {
+  getAll(): Promise<NewsMessage[]>;
+  create(data: Omit<NewsMessage, 'id' | 'createdAt'>): Promise<NewsMessage>;
   delete(id: string): Promise<void>;
   clearAll(): Promise<void>;
 }

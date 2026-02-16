@@ -7,6 +7,7 @@ import { BudgetsPage } from '@/pages/BudgetsPage';
 import { GoalsPage } from '@/pages/GoalsPage';
 import { ReportsPage } from '@/pages/ReportsPage';
 import { SettingsPage } from '@/pages/SettingsPage';
+import { NewsPage } from '@/pages/NewsPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { useAuthStore } from '@/store/authStore';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/orcamentos" element={<BudgetsPage />} />
           <Route path="/metas" element={<GoalsPage />} />
           <Route path="/relatorios" element={<ReportsPage />} />
+          <Route path="/noticias" element={<NewsPage />} />
           <Route path="/configuracoes" element={<SettingsPage />} />
         </Route>
       </Routes>
