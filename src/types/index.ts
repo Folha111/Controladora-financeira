@@ -152,3 +152,20 @@ export interface DateRange {
   from: Date;
   to: Date;
 }
+
+export type NotificationType =
+  | 'budget_exceeded'
+  | 'budget_warning'
+  | 'goal_deadline'
+  | 'goal_completed'
+  | 'recurring_due'
+  | 'health_critical';
+
+export interface AppNotification {
+  id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  link?: string;
+  createdAt: string; // ISO datetime
+}

@@ -1,6 +1,7 @@
 import { Menu, Moon, Sun, Wallet } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useUIStore } from '@/store/uiStore';
+import { NotificationPanel } from '@/components/notifications/NotificationPanel';
 
 export function Header() {
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
@@ -21,7 +22,8 @@ export function Header() {
         <Wallet className="h-5 w-5 text-emerald-600" />
         <span className="font-bold">Monetix</span>
       </div>
-      <div className="ml-auto">
+      <div className="ml-auto flex items-center gap-1">
+        <NotificationPanel />
         <Button variant="ghost" size="icon" onClick={toggleTheme}>
           {theme === 'light' ? (
             <Moon className="h-5 w-5" />

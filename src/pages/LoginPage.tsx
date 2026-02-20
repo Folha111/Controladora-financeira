@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Wallet,
   TrendingUp,
@@ -11,6 +12,7 @@ import {
   Sparkles,
   Lock,
   User,
+  Info,
 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -36,6 +38,7 @@ export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const login = useAuthStore((s) => s.login);
   const error = useAuthStore((s) => s.error);
+  const navigate = useNavigate();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -122,6 +125,17 @@ export function LoginPage() {
                 </div>
               ))}
             </div>
+
+            {/* "Conhecer mais" button */}
+            <button
+              type="button"
+              onClick={() => navigate('/conhecer')}
+              className="flex items-center gap-2 text-sm text-emerald-200/70 hover:text-emerald-100 transition-colors group"
+            >
+              <Info className="h-4 w-4 group-hover:scale-110 transition-transform" />
+              Conhecer mais do Monetix
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
           </div>
 
           <p className="text-emerald-200/30 text-xs">
@@ -215,6 +229,17 @@ export function LoginPage() {
             </Button>
           </form>
 
+          {/* "Conhecer mais" — mobile (only shows on small screens) */}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => navigate('/conhecer')}
+            className="w-full lg:hidden gap-2 rounded-xl h-11 border-border/60"
+          >
+            <Info className="h-4 w-4" />
+            Conhecer mais do Monetix
+          </Button>
+
           {/* Divider */}
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-border" />
@@ -223,18 +248,24 @@ export function LoginPage() {
           </div>
 
           {/* Credentials hint */}
-          <div className="p-4 bg-muted/40 rounded-2xl border border-border/60">
+          <div className="p-4 bg-muted/40 rounded-2xl border border-border/60 space-y-1.5">
             <p className="text-xs text-muted-foreground text-center leading-relaxed">
-              Use{' '}
-              <code className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground">
-                admin
-              </code>{' '}
-              como usuário e{' '}
+              Usuários disponíveis (senha:{' '}
               <code className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground">
                 123
-              </code>{' '}
-              como senha para entrar
+              </code>
+              )
             </p>
+            <div className="flex flex-wrap justify-center gap-1.5">
+              {['admin', 'Reolon', 'Folha', 'Santarem'].map((u) => (
+                <code
+                  key={u}
+                  className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground"
+                >
+                  {u}
+                </code>
+              ))}
+            </div>
           </div>
         </div>
       </div>
