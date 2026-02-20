@@ -10,3 +10,6 @@ export const goalService = mockGoalService;
 
 import { mockNewsService } from './mock/newsService';
 export const newsService = mockNewsService;
+
+import { mockRecurringTransactionService } from './mock/recurringTransactionService';
+export const recurringTransactionService = mockRecurringTransactionService;

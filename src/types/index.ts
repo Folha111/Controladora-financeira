@@ -122,6 +122,30 @@ export interface NewsMessage {
   createdAt: string; // ISO datetime
 }
 
+export const RECURRING_FREQUENCIES = ['weekly', 'monthly', 'yearly'] as const;
+export type RecurringFrequency = (typeof RECURRING_FREQUENCIES)[number];
+
+export const RECURRING_FREQUENCY_LABELS: Record<RecurringFrequency, string> = {
+  weekly: 'Semanal',
+  monthly: 'Mensal',
+  yearly: 'Anual',
+};
+
+export interface RecurringTransaction {
+  id: string;
+  type: TransactionType;
+  category: CategoryId;
+  description: string;
+  amountCents: number;
+  frequency: RecurringFrequency;
+  dayOfMonth?: number; // 1-31, usado quando frequency === 'monthly'
+  startDate: string; // YYYY-MM-DD
+  endDate?: string; // YYYY-MM-DD, opcional
+  active: boolean;
+  lastAppliedDate?: string; // YYYY-MM-DD, última data em que foi aplicada
+  createdAt: string; // ISO datetime
+}
+
 export type PeriodFilter = 'week' | 'month' | 'year' | 'custom';
 
 export interface DateRange {
