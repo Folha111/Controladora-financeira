@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { resetAllStores } from './resetStores';
 
 const DEFAULT_PASSWORD = '123';
 const AUTH_KEY = 'auth';
@@ -56,6 +57,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   },
   logout: () => {
     localStorage.removeItem(AUTH_KEY);
+    resetAllStores();
     set({ isAuthenticated: false, user: null, error: null });
   },
   changePassword: (currentPassword, newPassword) => {
