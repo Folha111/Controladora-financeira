@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   ArrowLeftRight,
+  RefreshCw,
   TrendingUp,
   Wallet,
   Target,
@@ -9,6 +10,7 @@ import {
   Newspaper,
   Settings,
   LogOut,
+  HeartPulse,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuthStore } from '@/store/authStore';
@@ -16,9 +18,11 @@ import { useAuthStore } from '@/store/authStore';
 const links = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/transacoes', label: 'Transações', icon: ArrowLeftRight },
+  { to: '/recorrentes', label: 'Recorrências', icon: RefreshCw },
   { to: '/investimentos', label: 'Investimentos', icon: TrendingUp },
   { to: '/orcamentos', label: 'Orçamentos', icon: Wallet },
   { to: '/metas', label: 'Metas', icon: Target },
+  { to: '/saude-financeira', label: 'Saúde Financeira', icon: HeartPulse },
   { to: '/relatorios', label: 'Relatórios', icon: FileBarChart },
   { to: '/noticias', label: 'Notícias', icon: Newspaper },
   { to: '/configuracoes', label: 'Configurações', icon: Settings },

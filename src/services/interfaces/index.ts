@@ -1,4 +1,4 @@
-import type { Transaction, Investment, Budget, Goal, NewsMessage } from '@/types';
+import type { Transaction, Investment, Budget, Goal, NewsMessage, RecurringTransaction } from '@/types';
 
 export interface ITransactionService {
   getAll(): Promise<Transaction[]>;
@@ -37,4 +37,11 @@ export interface INewsService {
   create(data: Omit<NewsMessage, 'id' | 'createdAt'>): Promise<NewsMessage>;
   delete(id: string): Promise<void>;
   clearAll(): Promise<void>;
+}
+
+export interface IRecurringTransactionService {
+  getAll(): Promise<RecurringTransaction[]>;
+  create(data: Omit<RecurringTransaction, 'id' | 'createdAt'>): Promise<RecurringTransaction>;
+  update(id: string, data: Partial<RecurringTransaction>): Promise<RecurringTransaction>;
+  delete(id: string): Promise<void>;
 }

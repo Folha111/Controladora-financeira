@@ -3,3 +3,4 @@ export { mockInvestments } from './investments';
 export { mockBudgets } from './budgets';
 export { mockGoals } from './goals';
 export { mockNews } from './news';
+export { mockRecurringTransactions } from './recurringTransactions';
