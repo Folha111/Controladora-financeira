@@ -1,15 +1,13 @@
-import { mockTransactionService } from './mock/transactionService';
-import { mockInvestmentService } from './mock/investmentService';
-import { mockBudgetService } from './mock/budgetService';
-import { mockGoalService } from './mock/goalService';
+import { firestoreTransactionService } from './firebase/transactionService';
+import { firestoreInvestmentService } from './firebase/investmentService';
+import { firestoreBudgetService } from './firebase/budgetService';
+import { firestoreGoalService } from './firebase/goalService';
+import { firestoreNewsService } from './firebase/newsService';
+import { firestoreRecurringTransactionService } from './firebase/recurringTransactionService';
 
-export const transactionService = mockTransactionService;
-export const investmentService = mockInvestmentService;
-export const budgetService = mockBudgetService;
-export const goalService = mockGoalService;
-
-import { mockNewsService } from './mock/newsService';
-export const newsService = mockNewsService;
-
-import { mockRecurringTransactionService } from './mock/recurringTransactionService';
-export const recurringTransactionService = mockRecurringTransactionService;
+export const transactionService = firestoreTransactionService;
+export const investmentService = firestoreInvestmentService;
+export const budgetService = firestoreBudgetService;
+export const goalService = firestoreGoalService;
+export const newsService = firestoreNewsService;
+export const recurringTransactionService = firestoreRecurringTransactionService;
