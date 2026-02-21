@@ -1,6 +1,5 @@
-import { addDoc, getDocs, deleteDoc, query, orderBy, collection } from 'firebase/firestore';
+import { addDoc, getDocs, deleteDoc, doc, query, orderBy, collection } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { getUserDoc } from './helpers';
 import type { NewsMessage } from '@/types';
 import type { INewsService } from '../interfaces';
 
@@ -23,7 +22,7 @@ export const firestoreNewsService: INewsService = {
   },
 
   async delete(id) {
-    await deleteDoc(getUserDoc('news', id));
+    await deleteDoc(doc(db, 'news', id));
   },
 
   async clearAll() {

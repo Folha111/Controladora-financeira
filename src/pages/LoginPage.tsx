@@ -240,33 +240,6 @@ export function LoginPage() {
             Conhecer mais do Monetix
           </Button>
 
-          {/* Divider */}
-          <div className="flex items-center gap-3">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs text-muted-foreground">credenciais de acesso</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-
-          {/* Credentials hint */}
-          <div className="p-4 bg-muted/40 rounded-2xl border border-border/60 space-y-1.5">
-            <p className="text-xs text-muted-foreground text-center leading-relaxed">
-              Usuários disponíveis (senha:{' '}
-              <code className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground">
-                123
-              </code>
-              )
-            </p>
-            <div className="flex flex-wrap justify-center gap-1.5">
-              {['admin', 'Reolon', 'Folha', 'Santarem'].map((u) => (
-                <code
-                  key={u}
-                  className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground"
-                >
-                  {u}
-                </code>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>
