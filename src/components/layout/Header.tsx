@@ -20,7 +20,7 @@ export function Header() {
       </Button>
       <div className="flex items-center gap-2 md:hidden">
         <Wallet className="h-5 w-5 text-emerald-600" />
-        <span className="font-bold">Monetix</span>
+        <span className="font-bold">FLUXOR</span>
       </div>
       <div className="ml-auto flex items-center gap-1">
         <NotificationPanel />

@@ -5,6 +5,7 @@ import { budgetService } from '@/services';
 interface BudgetStore {
   budgets: Budget[];
   loading: boolean;
+  error: string | null;
   fetch: () => Promise<void>;
   add: (data: Omit<Budget, 'id'>) => Promise<void>;
   update: (id: string, data: Partial<Budget>) => Promise<void>;
@@ -15,11 +16,17 @@ interface BudgetStore {
 export const useBudgetStore = create<BudgetStore>((set) => ({
   budgets: [],
   loading: false,
+  error: null,
 
   fetch: async () => {
-    set({ loading: true });
-    const budgets = await budgetService.getAll();
-    set({ budgets, loading: false });
+    set({ loading: true, error: null });
+    try {
+      const budgets = await budgetService.getAll();
+      set({ budgets, loading: false });
+    } catch (error) {
+      console.error('Falha ao buscar orçamentos:', error);
+      set({ loading: false, error: 'Não foi possível carregar os orçamentos.' });
+    }
   },
 
   add: async (data) => {

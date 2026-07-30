@@ -1,5 +1,4 @@
 import { addDoc, getDoc, getDocs, updateDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
 import { getUserCollection, getUserDoc, clearCollection } from './helpers';
 import type { Transaction } from '@/types';
 import type { ITransactionService } from '../interfaces';

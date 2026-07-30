@@ -5,6 +5,7 @@ import { investmentService } from '@/services';
 interface InvestmentStore {
   investments: Investment[];
   loading: boolean;
+  error: string | null;
   fetch: () => Promise<void>;
   add: (data: Omit<Investment, 'id' | 'createdAt'>) => Promise<void>;
   update: (id: string, data: Partial<Investment>) => Promise<void>;
@@ -15,11 +16,17 @@ interface InvestmentStore {
 export const useInvestmentStore = create<InvestmentStore>((set) => ({
   investments: [],
   loading: false,
+  error: null,
 
   fetch: async () => {
-    set({ loading: true });
-    const investments = await investmentService.getAll();
-    set({ investments, loading: false });
+    set({ loading: true, error: null });
+    try {
+      const investments = await investmentService.getAll();
+      set({ investments, loading: false });
+    } catch (error) {
+      console.error('Falha ao buscar investimentos:', error);
+      set({ loading: false, error: 'Não foi possível carregar os investimentos.' });
+    }
   },
 
   add: async (data) => {

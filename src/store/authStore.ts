@@ -3,7 +3,7 @@ import { resetAllStores } from './resetStores';
 
 const DEFAULT_PASSWORD = '123';
 const AUTH_KEY = 'auth';
-const PASSWORD_KEY = 'monetix_password';
+const PASSWORD_KEY = 'fluxor_password';
 
 const STATIC_USERS: Record<string, string> = {
   Reolon: '123',

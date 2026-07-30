@@ -15,7 +15,7 @@ export function MobileNav() {
         <SheetHeader className="border-b px-6 py-4">
           <SheetTitle className="flex items-center gap-2">
             <Wallet className="h-5 w-5 text-emerald-600" />
-            Monetix
+            FLUXOR
           </SheetTitle>
         </SheetHeader>
         <nav className="space-y-1 p-3">

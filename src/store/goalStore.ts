@@ -5,6 +5,7 @@ import { goalService } from '@/services';
 interface GoalStore {
   goals: Goal[];
   loading: boolean;
+  error: string | null;
   fetch: () => Promise<void>;
   add: (data: Omit<Goal, 'id' | 'createdAt'>) => Promise<void>;
   update: (id: string, data: Partial<Goal>) => Promise<void>;
@@ -15,11 +16,17 @@ interface GoalStore {
 export const useGoalStore = create<GoalStore>((set) => ({
   goals: [],
   loading: false,
+  error: null,
 
   fetch: async () => {
-    set({ loading: true });
-    const goals = await goalService.getAll();
-    set({ goals, loading: false });
+    set({ loading: true, error: null });
+    try {
+      const goals = await goalService.getAll();
+      set({ goals, loading: false });
+    } catch (error) {
+      console.error('Falha ao buscar metas:', error);
+      set({ loading: false, error: 'Não foi possível carregar as metas.' });
+    }
   },
 
   add: async (data) => {
