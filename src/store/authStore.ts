@@ -5,12 +5,6 @@ const DEFAULT_PASSWORD = '123';
 const AUTH_KEY = 'auth';
 const PASSWORD_KEY = 'fluxor_password';
 
-const STATIC_USERS: Record<string, string> = {
-  Reolon: '123',
-  Folha: '123',
-  Santarem: '123',
-};
-
 interface AuthStore {
   isAuthenticated: boolean;
   user: string | null;
@@ -43,17 +37,15 @@ export const useAuthStore = create<AuthStore>((set) => ({
   user: initial?.user ?? null,
   error: null,
   login: (username, password) => {
-    const isAdmin = username === 'admin' && password === getStoredPassword();
-    const isStaticUser = STATIC_USERS[username] !== undefined && STATIC_USERS[username] === password;
-
-    if (isAdmin || isStaticUser) {
-      localStorage.setItem(AUTH_KEY, JSON.stringify({ isAuthenticated: true, user: username }));
-      window.history.replaceState(null, '', '/');
-      set({ isAuthenticated: true, user: username, error: null });
-      return true;
+    if (!username.trim() || !password.trim()) {
+      set({ error: 'Preencha usuário e senha' });
+      return false;
     }
-    set({ error: 'Usuário ou senha inválidos' });
-    return false;
+
+    localStorage.setItem(AUTH_KEY, JSON.stringify({ isAuthenticated: true, user: username }));
+    window.history.replaceState(null, '', '/');
+    set({ isAuthenticated: true, user: username, error: null });
+    return true;
   },
   logout: () => {
     localStorage.removeItem(AUTH_KEY);
