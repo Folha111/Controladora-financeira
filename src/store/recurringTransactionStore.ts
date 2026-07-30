@@ -5,6 +5,7 @@ import { recurringTransactionService } from '@/services';
 interface RecurringTransactionStore {
   recurringTransactions: RecurringTransaction[];
   loading: boolean;
+  error: string | null;
   fetch: () => Promise<void>;
   add: (data: Omit<RecurringTransaction, 'id' | 'createdAt'>) => Promise<void>;
   update: (id: string, data: Partial<RecurringTransaction>) => Promise<void>;
@@ -15,11 +16,17 @@ interface RecurringTransactionStore {
 export const useRecurringTransactionStore = create<RecurringTransactionStore>((set) => ({
   recurringTransactions: [],
   loading: false,
+  error: null,
 
   fetch: async () => {
-    set({ loading: true });
-    const recurringTransactions = await recurringTransactionService.getAll();
-    set({ recurringTransactions, loading: false });
+    set({ loading: true, error: null });
+    try {
+      const recurringTransactions = await recurringTransactionService.getAll();
+      set({ recurringTransactions, loading: false });
+    } catch (error) {
+      console.error('Falha ao buscar transações recorrentes:', error);
+      set({ loading: false, error: 'Não foi possível carregar as transações recorrentes.' });
+    }
   },
 
   add: async (data) => {

@@ -352,6 +352,6 @@ export function exportPdf(data: ReportData): void {
     );
   }
 
-  const fileName = `monetix-relatorio-${format(data.generatedAt, 'yyyy-MM-dd-HHmm')}.pdf`;
+  const fileName = `fluxor-relatorio-${format(data.generatedAt, 'yyyy-MM-dd-HHmm')}.pdf`;
   doc.save(fileName);
 }

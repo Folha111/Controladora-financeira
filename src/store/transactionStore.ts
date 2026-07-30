@@ -5,6 +5,7 @@ import { transactionService } from '@/services';
 interface TransactionStore {
   transactions: Transaction[];
   loading: boolean;
+  error: string | null;
   fetch: () => Promise<void>;
   add: (data: Omit<Transaction, 'id' | 'createdAt'>) => Promise<void>;
   update: (id: string, data: Partial<Transaction>) => Promise<void>;
@@ -15,11 +16,17 @@ interface TransactionStore {
 export const useTransactionStore = create<TransactionStore>((set) => ({
   transactions: [],
   loading: false,
+  error: null,
 
   fetch: async () => {
-    set({ loading: true });
-    const transactions = await transactionService.getAll();
-    set({ transactions, loading: false });
+    set({ loading: true, error: null });
+    try {
+      const transactions = await transactionService.getAll();
+      set({ transactions, loading: false });
+    } catch (error) {
+      console.error('Falha ao buscar transações:', error);
+      set({ loading: false, error: 'Não foi possível carregar as transações.' });
+    }
   },
 
   add: async (data) => {

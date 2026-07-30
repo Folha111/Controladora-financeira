@@ -5,7 +5,7 @@ export const mockNews: NewsMessage[] = [
     id: '1',
     author: 'admin',
     content:
-      'Bem-vindos ao Monetix! Aqui você acompanha as últimas novidades e dicas financeiras.',
+      'Bem-vindos ao FLUXOR! Aqui você acompanha as últimas novidades e dicas financeiras.',
     createdAt: '2026-02-10T09:00:00Z',
   },
   {

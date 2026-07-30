@@ -177,7 +177,7 @@ export function FeaturesPage() {
             <div className="rounded-xl bg-emerald-50 dark:bg-emerald-950 p-2 border border-emerald-100 dark:border-emerald-800">
               <Wallet className="h-5 w-5 text-emerald-600" />
             </div>
-            <span className="text-lg font-bold tracking-tight">Monetix</span>
+            <span className="text-lg font-bold tracking-tight">FLUXOR</span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -221,7 +221,7 @@ export function FeaturesPage() {
           <h1 className="text-5xl font-bold tracking-tight leading-tight mb-5">
             Conheça o{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">
-              Monetix
+              FLUXOR
             </span>
           </h1>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed mb-10">
@@ -336,7 +336,7 @@ export function FeaturesPage() {
             className="gap-2 bg-white text-emerald-900 hover:bg-emerald-50 font-semibold shadow-xl shadow-black/20 h-12 px-8 rounded-xl active:scale-[0.98] transition-all"
           >
             <LogIn className="h-5 w-5" />
-            Acessar o Monetix
+            Acessar o FLUXOR
           </Button>
         </div>
       </section>

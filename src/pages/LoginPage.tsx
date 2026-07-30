@@ -75,7 +75,7 @@ export function LoginPage() {
             <div className="p-2.5 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 shadow-lg shadow-black/20">
               <Wallet className="h-7 w-7 text-white" />
             </div>
-            <span className="text-2xl font-bold text-white tracking-tight">Monetix</span>
+            <span className="text-2xl font-bold text-white tracking-tight">FLUXOR</span>
           </div>
 
           {/* Hero text */}
@@ -133,13 +133,13 @@ export function LoginPage() {
               className="flex items-center gap-2 text-sm text-emerald-200/70 hover:text-emerald-100 transition-colors group"
             >
               <Info className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              Conhecer mais do Monetix
+              Conhecer mais do FLUXOR
               <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
 
           <p className="text-emerald-200/30 text-xs">
-            © 2024 Monetix · Todos os direitos reservados
+            © 2024 FLUXOR · Todos os direitos reservados
           </p>
         </div>
       </div>
@@ -153,7 +153,7 @@ export function LoginPage() {
             <div className="p-2.5 bg-emerald-50 dark:bg-emerald-950 rounded-2xl border border-emerald-100 dark:border-emerald-800">
               <Wallet className="h-7 w-7 text-emerald-600" />
             </div>
-            <span className="text-2xl font-bold tracking-tight">Monetix</span>
+            <span className="text-2xl font-bold tracking-tight">FLUXOR</span>
           </div>
 
           {/* Header */}
@@ -237,36 +237,9 @@ export function LoginPage() {
             className="w-full lg:hidden gap-2 rounded-xl h-11 border-border/60"
           >
             <Info className="h-4 w-4" />
-            Conhecer mais do Monetix
+            Conhecer mais do FLUXOR
           </Button>
 
-          {/* Divider */}
-          <div className="flex items-center gap-3">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs text-muted-foreground">credenciais de acesso</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-
-          {/* Credentials hint */}
-          <div className="p-4 bg-muted/40 rounded-2xl border border-border/60 space-y-1.5">
-            <p className="text-xs text-muted-foreground text-center leading-relaxed">
-              Usuários disponíveis (senha:{' '}
-              <code className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground">
-                123
-              </code>
-              )
-            </p>
-            <div className="flex flex-wrap justify-center gap-1.5">
-              {['admin', 'Reolon', 'Folha', 'Santarem'].map((u) => (
-                <code
-                  key={u}
-                  className="px-1.5 py-0.5 bg-background border border-border rounded-md font-mono text-[11px] text-foreground"
-                >
-                  {u}
-                </code>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>

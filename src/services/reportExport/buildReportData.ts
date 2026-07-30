@@ -95,7 +95,7 @@ export function buildReportData(
   const totalCurrentValue = calculateTotalCurrentValue(investments);
 
   return {
-    appName: 'Monetix',
+    appName: 'FLUXOR',
     periodLabel,
     generatedAt: new Date(),
     totalIncomeCents: calculateTotalIncome(transactions),

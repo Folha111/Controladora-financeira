@@ -121,7 +121,7 @@ export function exportCsv(data: ReportData): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `monetix-relatorio-${format(data.generatedAt, 'yyyy-MM-dd-HHmm')}.csv`;
+  link.download = `fluxor-relatorio-${format(data.generatedAt, 'yyyy-MM-dd-HHmm')}.csv`;
   link.click();
   URL.revokeObjectURL(url);
 }

@@ -35,7 +35,7 @@ export function Sidebar() {
     <aside className="bg-card hidden h-screen w-64 flex-col border-r md:flex">
       <div className="flex h-14 items-center border-b px-6">
         <Wallet className="mr-2 h-6 w-6 text-emerald-600" />
-        <span className="text-lg font-bold">Monetix</span>
+        <span className="text-lg font-bold">FLUXOR</span>
       </div>
       <nav className="flex-1 space-y-1 p-3">
         {links.map((link) => (
